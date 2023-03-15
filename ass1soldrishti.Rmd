@@ -1,0 +1,43 @@
+---
+title: "Assignment"
+author: "Drishti"
+date: "2023-02-07"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+## Question1
+### Install babynames and add this package to the library
+```{r}
+#install.packages("babynames") #installing the required package
+library(babynames) #add the package to the library
+```
+
+## Question 2
+### Find rows where sex= M and name= Taylor
+```{r}
+library(babynames)
+s1= subset(babynames, sex=="M"& name=="Taylor") 
+s1
+  
+```
+
+## Question3
+### Find data where year= 1985 and plot bar chart using different color for different sex
+```{r}
+library(babynames)
+structure(babynames)
+
+library(tidyverse)
+babynames_edit_df= subset(babynames, year==1985) 
+babynames_edit_df
+
+ggplot(babynames_edit_df,aes(n,fill=sex))+
+  geom_bar()
+
+fac_data<- factor(babynames_edit_df$sex)
+barplot(babynames_edit_df$n,babynames_edit_df$prop, col=fac_data)
+```
+
